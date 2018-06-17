@@ -77,7 +77,7 @@ source $ZSH/oh-my-zsh.sh
  export QT_PLUGIN_PATH="/usr/lib64/qt5/plugins"
 
  
-export JULIA_EDITOR="/usr/bin/emacsclient -a gvim"
+export JULIA_EDITOR="/usr/bin/emacsclient -a emacs"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -89,6 +89,7 @@ export PATH=$PATH:/usr/local/MATLAB/R2017a/bin
 export PATH=$PATH:/home/ashedko/anaconda3/bin
 export PATH=$PATH:/usr/local/cuda/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/nvidia-384
 export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/cuda/lib64
 export MATLABCMD=/usr/local/MATLAB/R2017a/bin/glnxa64/MATLAB
 export PATH="/home/ashedko/.cask/bin:$PATH"
@@ -98,13 +99,13 @@ export DTK_PROGRAM=espeak
 # export PATH=$PATH:/home/ashedko/Projects/erlang/elixir/bin
 
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias to_neuro="source activate neuro"
 alias anpy="~/anaconda3/bin/python3"
 alias zotero="~/Apps/Zotero_linux-x86_64/Zotero"
+
+# keyboard layouts
+setxkbmap -layout "us,ru" -option "grp:alt_shift_toggle"
+
 # Neuro stuff
-#
 #SPM12
 export SPM_PATH=/usr/local/MATLAB/R2017a/toolbox/spm12//
 
@@ -112,8 +113,13 @@ export SPM_PATH=/usr/local/MATLAB/R2017a/toolbox/spm12//
 synclient HorizTwoFingerScroll=1
 synclient TapButton3=2
 
+# haskell stack stuff
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+eval "$(stack --bash-completion-script stack)"
+export PATH=$PATH:/home/ashedko/.local/bin
 
-
+# perl stuff
 PATH="/home/ashedko/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/ashedko/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/ashedko/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
